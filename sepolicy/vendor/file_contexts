@@ -26,7 +26,7 @@
 /sys/bus/platform/drivers/kcal_ctrl(/.*)?                    u:object_r:kcal_dev:s0
 
 # FPS Info
-/sys/kernel/debug/dri/0/crtc97/fps                              u:object_r:sysfs_fps:s0
+/sys/class/drm/sde-crtc-0/measured_fps                              u:object_r:sysfs_fps:s0
 
 # Touchboost
 /sys/module/msm_performance/parameters/touchboost		            u:object_r:sysfs_touchboost:s0
