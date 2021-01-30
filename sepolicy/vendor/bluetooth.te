@@ -1,1 +1,1 @@
-allow bluetooth incremental_prop:file { read };
+allow bluetooth incremental_prop:file { open read };

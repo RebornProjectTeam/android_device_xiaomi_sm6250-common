@@ -1,2 +1,5 @@
 # FPS Info
 allow platform_app sysfs_fps:file { getattr open read };
+
+allow platform_app vendor_audio_prop:file { read };
+allow platform_app cgroup:file { read };
