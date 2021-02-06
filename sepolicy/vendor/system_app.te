@@ -13,3 +13,6 @@ allow system_app sysfs_touchboost:file { open read getattr write };
 
 # allow system apps to read battery status
 r_dir_file(system_app, sysfs_battery_supply)
+
+allow system_app vendor_default_prop:file { getattr open read };
+allow system_app vendor_default_prop:file {map};
