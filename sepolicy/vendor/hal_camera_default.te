@@ -3,3 +3,6 @@ allow hal_camera_default mnt_vendor_file:dir { search };
 allow hal_camera_default proc_stat:file { read };
 allow hal_camera_default default_prop:file { read };
 allow hal_camera_default vendor_xdsp_device:chr_file { read };
+allow hal_camera_default mnt_vendor_file:file { getattr open read };
+allow hal_camera_default adbd_prop:file { getattr map open };
+allow hal_camera_default apexd_prop:file open;

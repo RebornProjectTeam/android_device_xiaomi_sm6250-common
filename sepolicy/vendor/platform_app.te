@@ -1,5 +1,11 @@
 # FPS Info
 allow platform_app sysfs_fps:file { getattr open read };
 
-allow platform_app vendor_audio_prop:file { read };
-allow platform_app cgroup:file { read };
+allow platform_app vendor_audio_prop:file { getattr open read };
+allow platform_app cgroup:file { getattr open read };
+allow platform_app exported_camera_prop:file { getattr open read };
+allow platform_app vendor_audio_prop:file { getattr open read map };
+allow platform_app adbd_prop:file { getattr map open };
+allow platform_app apexd_prop:file { getattr open };
+
+
