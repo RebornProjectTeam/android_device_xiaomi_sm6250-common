@@ -128,7 +128,6 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     gralloc.atoll \
     hwcomposer.atoll \
-    libdisplayconfig.qti \
     libdisplayconfig \
     libtinyxml \
     libvulkan \
