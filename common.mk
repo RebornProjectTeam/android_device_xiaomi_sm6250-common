@@ -16,9 +16,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
-# MiuiCamera
-$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
-
 # AID/fs configs
 PRODUCT_PACKAGES += \
     fs_config_files
@@ -28,36 +25,26 @@ PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Audio
 PRODUCT_PACKAGES += \
-    libvolumelistener \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libqcompostprocbundle
-
-PRODUCT_PACKAGES += \
-    audio.primary.atoll \
-    audio.a2dp.default \
-    audio.usb.default \
-    audio.r_submix.default \
-    libaudio-resampler \
-    libtinycompress \
-    sound_trigger.primary.atoll.so
-
-PRODUCT_PACKAGES += \
-    android.hardware.audio@6.0-impl:32 \
     android.hardware.audio.effect@6.0-impl:32 \
-    android.hardware.soundtrigger@2.2-impl \
-    android.hardware.audio@2.0-service
-
-PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-service \
+    android.hardware.audio@6.0-impl:32 \
+    android.hardware.soundtrigger@2.2-impl:32 \
+    audio.a2dp.default \
+    audio.primary.atoll:32 \
+    audio.r_submix.default \
+    audio.usb.default \
     liba2dpoffload \
-    libbatterylistener \
-    libcirrusspkrprot \
-    libcomprcapture \
-    libexthwplugin \
+    libaudio-resampler \
     libhdmiedid \
     libhfp \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
     libsndmonitor \
-    libspkrprot
+    libspkrprot \
+    libtinycompress \
+    libtinycompress.vendor \
+    libvolumelistener
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
@@ -110,8 +97,13 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service_64 \
+    libdng_sdk.vendor \
     libgui_vendor \
-    GCamGOPrebuilt
+    libxml2 \
+    Snap \
+    vendor.qti.hardware.camera.device@1.0.vendor
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
@@ -123,23 +115,29 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
-# Display
+# Codec2 modules
 PRODUCT_PACKAGES += \
-    disable_configstore \
-    gralloc.atoll \
-    hwcomposer.atoll \
-    libdisplayconfig.qti \
-    libqdMetaData \
-    libtinyxml \
-    memtrack.atoll
+    com.android.media.swcodec \
+    libsfplugin_ccodec
 
+# Display/Graphics
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-impl \
-    android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
+    gralloc.atoll \
+    hwcomposer.atoll \
+    libdisplayconfig.qti \
+    libdisplayconfig \
+    libtinyxml \
+    libvulkan \
+    memtrack.atoll \
+    vendor.qti.hardware.display.allocator-service
+
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.composer@2.4-impl \
+    android.hardware.graphics.composer@2.4-service \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.display.mapper@2.0.vendor
 
@@ -149,9 +147,10 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.3-service.clearkey
 
-# Doze
+# External exFat tools
 PRODUCT_PACKAGES += \
-    XiaomiDoze
+    mkfs.exfat \
+    fsck.exfat
 
 # Fastbootd
 PRODUCT_PACKAGES += \
@@ -178,6 +177,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom
 
 # GPS
+
 PRODUCT_PACKAGES += \
     libsensorndkbridge
 
@@ -190,8 +190,9 @@ PRODUCT_COPY_FILES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl-qti \
-    android.hardware.health@2.1-service
+    android.hardware.health@2.0 \
+    android.hardware.health@2.0-service \
+    android.hardware.health@2.0-impl.recovery
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -259,6 +260,9 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_vndk.vendor \
     libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -289,7 +293,8 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-arrow
+    $(LOCAL_PATH)/overlay-system \
+    $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
@@ -426,14 +431,15 @@ PRODUCT_COPY_FILES += \
 
 # WiFi Display
 PRODUCT_PACKAGES += \
+    libavservices_minijail_32 \
+    libdisplayconfig.qti \
+    vendor.display.config@2.0 \
+    libdisplayconfig.vendor \
     libnl \
+    libqdMetaData \
+    libqdMetaData.system \
+    libqdMetaData.vendor \
     libwfdaac_vendor
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
-
-# XiaomiParts
-PRODUCT_PACKAGES += \
-    XiaomiParts \
-    init.xiaomiparts.rc \
-    init.xiaomiparts.sh
