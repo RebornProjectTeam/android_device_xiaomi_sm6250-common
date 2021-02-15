@@ -1,5 +1,25 @@
 <manifest version="1.0" type="device" target-level="4">
     <hal format="hidl">
+        <name>android.hardware.configstore</name>
+        <transport>hwbinder</transport>
+        <version>1.1</version>
+        <interface>
+            <name>ISurfaceFlingerConfigs</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.1::ISurfaceFlingerConfigs/default</fqname>		
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.health</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IHealth</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@2.0::IHealth/default</fqname>		
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
         <version>6.0</version>
@@ -7,7 +27,7 @@
             <name>IDevicesFactory</name>
             <instance>default</instance>
         </interface>
-        <fqname>@6.0::IDevicesFactory/default</fqname>
+        <fqname>@6.0::IDevicesFactory/default</fqname>			
     </hal>
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
@@ -17,7 +37,7 @@
             <name>IEffectsFactory</name>
             <instance>default</instance>
         </interface>
-        <fqname>@6.0::IEffectsFactory/default</fqname>
+        <fqname>@6.0::IEffectsFactory/default</fqname>			
     </hal>
     <hal format="hidl">
         <name>android.hardware.biometrics.fingerprint</name>
@@ -28,6 +48,28 @@
             <instance>default</instance>
         </interface>
         <fqname>@2.1::IBiometricsFingerprint/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.trust</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IUsbRestrict</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IUsbRestrict/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.radio</name>
+        <transport>hwbinder</transport>
+        <version>1.5</version>
+        <interface>
+            <name>IRadio</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+        <fqname>@1.1::IRadio/slot1</fqname>
+        <fqname>@1.1::IRadio/slot2</fqname>		
     </hal>
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
