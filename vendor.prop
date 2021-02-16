@@ -219,9 +219,6 @@ ro.audio.pcm.samplerate=48000
 # Camera
 camera.disable_zsl_mode=1
 
-# Camera Aux Package list
-vendor.camera.aux.packagelist=com.google.android.GoogleCamera,org.codeaurora.snapcam,com.android.camera
-
 # Charger
 ro.charger.enable_suspend=true
 
