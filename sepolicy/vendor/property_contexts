@@ -15,9 +15,6 @@ disable.cpp.power.collapse              u:object_r:vendor_default_prop:s0
 vendor.camera.eis.gyro_name             u:object_r:vendor_camera_prop:s0
 vidc.enc.dcvs.extra-buff-count          u:object_r:vendor_default_prop:s0
 
-# Dirac
-persist.audio.dirac                             u:object_r:dirac_prop:s0
-
 # IR
 ro.lirc.dev				u:object_r:lirc_prop:s0
 
