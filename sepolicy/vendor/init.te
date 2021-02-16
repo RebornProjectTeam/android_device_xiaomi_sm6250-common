@@ -1,7 +1,4 @@
-allow init su:process { noatsecure  rlimitinh  siginh  transition };
 allow init vendor_configs_file:file { mounton };
-allow init vendor_file:file { execute execute_no_trans };
 allow init hwservicemanager:binder { call transfer };
 allow init self:qipcrtr_socket create;
-allow init sysfs:file { open read };
 allow init vendor_sysfs_battery_supply:file setattr;
