@@ -211,6 +211,7 @@ qc.tunnel.audio.encode=false
 vendor.av.offload.enable=false
 av.offload.enable=false
 qc.av.offload.enable=false
+use.voice.path.for.pcm.voip=true
 ro.audioprofile.more=yes
 persist.sys.media.use-awesome=1
 ro.audio.samplerate=48000
