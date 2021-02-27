@@ -420,3 +420,8 @@ persist.sys.wfd.virtual=0
 
 # Wi-Fi
 wifi.aware.interface=wifi-aware0
+
+# Zygote
+persist.device_config.runtime_native.usap_pool_enabled=true
+
+
