@@ -414,6 +414,17 @@ persist.device_config.runtime_native.usap_pool_enabled=true
 # Use Vulkan backend for Skia UI rendering
 debug.hwui.renderer=skiavk
 
+# Vibro
+ro.vendor.vibrator.hal.config.dynamic=1
+ro.vendor.vibrator.hal.click.duration=6
+ro.vendor.vibrator.hal.tick.duration=6
+ro.vendor.vibrator.hal.heavyclick.duration=6
+ro.vendor.vibrator.hal.short.voltage=161
+ro.vendor.vibrator.hal.long.voltage=161
+ro.vendor.vibrator.hal.long.frequency.shift=10
+ro.vendor.vibrator.hal.steady.shape=1
+ro.vendor.vibrator.hal.lptrigger=0
+
 # WFD
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0

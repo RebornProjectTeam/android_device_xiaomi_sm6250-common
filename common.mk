@@ -102,13 +102,8 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service_64 \
-    libdng_sdk.vendor \
     libgui_vendor \
-    libxml2 \
-    GCamGOPrebuilt \
-    vendor.qti.hardware.camera.device@1.0.vendor
+    GCamGOPrebuilt
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
@@ -404,10 +399,6 @@ PRODUCT_COPY_FILES += \
 # Vibrator
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.vibrator.service
-	
-# Vendor libstdc++
-PRODUCT_PACKAGES += \
-    libstdc++.vendor	
 
 # VNDK
 PRODUCT_COPY_FILES += \
