@@ -72,8 +72,8 @@ PRODUCT_PACKAGES += \
 	FM2 \
 	qcom.fmradio \
 	qcom.fmradio.xml
-	
-PRODUCT_BOOT_JARS += qcom.fmradio	
+
+PRODUCT_BOOT_JARS += qcom.fmradio
 
 # AVB
 PRODUCT_PACKAGES += \
@@ -120,6 +120,13 @@ PRODUCT_PACKAGES += \
     com.android.media.swcodec \
     libsfplugin_ccodec
 
+PRODUCT_PACKAGES += \
+    libqcodec2 \
+    vendor.qti.media.c2@1.0-service \
+    media_codecs_c2.xml \
+    codec2.vendor.ext.policy \
+    codec2.vendor.base.policy
+
 # Display/Graphics
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
@@ -164,7 +171,8 @@ PRODUCT_COPY_FILES += \
 
 # Framework detect
 PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect.vendor
+    libqti_vndfwk_detect.vendor \
+    libvndfwk_detect_jni.qti.vendor
 
 # Freeform Multiwindow
 PRODUCT_COPY_FILES += \
@@ -302,7 +310,11 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     $(COMMON_PATH)/overlay-lineage/lineage-sdk \
+    $(LOCAL_PATH)/overlay/packages/apps/Snap \
     $(COMMON_PATH)/overlay-system
+
+# Properties
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
